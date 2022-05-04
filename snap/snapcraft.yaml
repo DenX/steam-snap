@@ -82,6 +82,12 @@ plugs:
   shared-memory:
     private: true
 
+slots:
+  dbus-daemon:
+    interface: dbus
+    bus: system
+    name: org.freedesktop.DBus.Properties
+
 environment:
   LD_LIBRARY_PATH: $SNAP/usr/lib/i386-linux-gnu:$SNAP/lib/i386-linux-gnu:$SNAP/usr/lib/i386-linux-gnu/pulseaudio${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
@@ -229,3 +235,6 @@ apps:
       - fuse-support
       - steam-support
       - removable-media
+      - pulseaudio
+
+    slots: [ dbus-daemon ]
